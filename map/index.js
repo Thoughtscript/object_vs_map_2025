@@ -54,6 +54,25 @@ module.exports = {
         return RESULT_LOG(`MAP_READ_N_KEYS`, END, BEGIN)
     },
 
+    MAP_READ_N_KEYS_ITER: () => {
+        const TESTS = MAKE_NUM_N_KEY()
+
+        const M = new Map()
+        for (let i = 0; i < TESTS.length; i++) {
+            M.set(TESTS[i], TESTS[i])
+        }
+
+        const BEGIN = new Date()
+        const iterator = M[Symbol.iterator]()
+        for (const item of iterator) {
+            const K = item[0]
+            const V = item[1]
+            if (FULL_LOGGING) console.log(`${K}, ${V}`)
+        }
+        const END = new Date()
+        return RESULT_LOG(`MAP_READ_N_KEYS_ITER`, END, BEGIN)
+    },
+
     MAP_SET_S_KEYS: () => {
         const TESTS = MAKE_NUM_S_KEY()
 
@@ -82,5 +101,24 @@ module.exports = {
         })
         const END = new Date()
         return RESULT_LOG(`MAP_READ_S_KEYS`, END, BEGIN)
+    },
+
+    MAP_READ_S_KEYS_ITER: () => {
+        const TESTS = MAKE_NUM_N_KEY()
+
+        const M = new Map()
+        for (let i = 0; i < TESTS.length; i++) {
+            M.set(TESTS[i], TESTS[i])
+        }
+
+        const BEGIN = new Date()
+        const iterator = M[Symbol.iterator]()
+        for (const item of iterator) {
+            const K = item[0]
+            const V = item[1]
+            if (FULL_LOGGING) console.log(`${K}, ${V}`)
+        }
+        const END = new Date()
+        return RESULT_LOG(`MAP_READ_S_KEYS_ITER`, END, BEGIN)
     }
 }
