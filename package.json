@@ -5,7 +5,7 @@
     "scripts": {
         "stop-win": "Taskkill /IM node.exe /F",
         "stop-linux": "killall node",
-        "regen-package-lock": "rm -rf package-lock.json node_modules .parcel-cache && npm i --package-lock-only && rm -rf dist .parcel-cache",
+        "regen-package-lock": "rm -rf package-lock.json node_modules && npm i --package-lock-only",
         "test": "node index.js"
     },
     "repository": {
